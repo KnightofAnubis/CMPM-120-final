@@ -24,6 +24,7 @@ class Load extends Phaser.Scene {
         this.load.image('witch', 'witch_temp.png');
         //scene munchkins
         this.load.image('bubble', 'bubble.png');
+        this.load.image('folwer01', 'flower01.png');
 
         
         
