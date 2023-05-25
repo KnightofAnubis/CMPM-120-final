@@ -10,8 +10,11 @@ class House extends Phaser.Scene {
         this.tornado = this.add.image(game.config.width/2, game.config.height/2, 'tornado', 0).setOrigin(0.5);
 
         //witch sprite
-        this.witch = this.physics.add.sprite(game.config.width/2, game.config.height/2, 'witch', 0);
-        
+        this.witch = this.physics.add.sprite(game.config.width/2, game.config.height/2, 'witch', 0).setVelocity(100, 200).setBounce(1, 1).setCollideWorldBounds(true, 1, 1, true);
+        this.witch.body.setSize(50,50);
+
+
+
         //house shadow
         this.shadow = this.physics.add.sprite(game.config.width/2, game.config.height/2, 'houseShadow', 0); 
         this.shadow.body.setCollideWorldBounds(true);
@@ -29,6 +32,7 @@ class House extends Phaser.Scene {
     }
 
     update() {
+
         //moving house shadow with WASD
         this.direction = new Phaser.Math.Vector2(0);
         if(keyA.isDown) {
