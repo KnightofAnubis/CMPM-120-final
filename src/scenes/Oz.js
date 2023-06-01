@@ -2,7 +2,21 @@ class Oz extends Phaser.Scene {
     constructor() {
         super('ozScene');
     }
+    preload() {
+        this.load.path = './assets'
+        this.load.image('tilesetImage', 'tileset.png');
+        this.load.tilemapTiledJSON('tilemapJSON','Wiz.json');
+    }
 
+    create() {
+
+    }
+
+    update() {
+
+    }
+}
+/*
     create() {
         //scene test without tilemap:
         this.add.text(game.config.width/2, game.config.height/5 - borderUISize - borderPadding, "This is Oz!", menuConfig).setOrigin(0.5);
@@ -40,3 +54,4 @@ class Oz extends Phaser.Scene {
         this.bubble = this.add.image(640, 0, 'bubble', 0);
     }
 }
+*/
