@@ -10,11 +10,13 @@ class Credit extends Phaser.Scene {
         this.add.text(game.config.width/2, game.config.height/1 - borderUISize - borderPadding, "Press SPACE to return to the Menu.", menuConfig).setOrigin(0.5);
      //input for moving to next scene
      this.cursors = this.input.keyboard.createCursorKeys();
+     keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+
     }
 
     update() {
          //moving to next scene...
-         if(this.cursors.space.isDown){
+         if(keySPACE.isDown){
             this.scene.start('menuScene');
         }
         

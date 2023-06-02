@@ -1,4 +1,5 @@
 {
+    "activeFile": "wiz/wiz.tmx",
     "expandedProjectPaths": [
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
@@ -30,15 +31,30 @@
                 "x": 214,
                 "y": 185
             }
+        },
+        "wiz/tileset.tsx": {
+            "scaleInDock": 1
+        },
+        "wiz/wiz.tmx": {
+            "scale": 2.412109375,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 256.2072874493927,
+                "y": 256.2072874493927
+            }
+        },
+        "wiz/wiz.tmx#tileset": {
+            "scaleInDock": 1
         }
     },
     "last.exportedFilePath": "C:/Users/Zac Bell/Desktop/CMPM120/CMPM-120-final/assets/wiz",
     "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
     "openFiles": [
-        "Wiz.tmj",
-        "tileset.tsx"
+        "wiz/wiz.tmx"
     ],
+    "project": "tilemap.tiled-project",
     "recentFiles": [
+        "wiz/wiz.tmx",
         "wiz.tmx",
         "tileset.tsx",
         "Wiz.tmj",

@@ -28,8 +28,8 @@ class House extends Phaser.Scene {
         keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
-        this.cursors = this.input.keyboard.createCursorKeys(); 
-       
+        keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+        this.cursors = this.input.keyboard.createCursorKeys();
     }
 
     update() {
@@ -50,7 +50,7 @@ class House extends Phaser.Scene {
         this.shadow.setVelocity(this.VEL * this.direction.x, this.VEL * this.direction.y);
        
         //squish the witch
-        if(this.cursors.space.isDown){
+        if(keySPACE.isDown){
             //house shadow 'zooms in' gets bigger
             this.physics.world.collide(this.shadow, this.witch, this.collision, null, this);
         }

@@ -96,8 +96,17 @@
  "tileheight":16,
  "tilesets":[
         {
+         "columns":33,
          "firstgid":1,
-         "source":"tileset.tsx"
+         "image":"tileset.png",
+         "imageheight":1024,
+         "imagewidth":528,
+         "margin":0,
+         "name":"tileset",
+         "spacing":0,
+         "tilecount":2112,
+         "tileheight":16,
+         "tilewidth":16
         }],
  "tilewidth":16,
  "type":"map",

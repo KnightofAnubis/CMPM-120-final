@@ -1,0 +1,38 @@
+class playerChar extends Phaser.Physics.Arcade.Sprite {
+    constructor(scene, x, y, texture, frame ) {
+        super(scene, x, y, texture, frame);
+        this.scene = scene
+        this.scene.add.existing(this);
+        this.scene.physics.add.existing(this);
+        this.body.onOverlap = true;
+        this.body.setCollideWorldBounds(true);
+    }
+
+    create(){
+        
+    }
+
+    update(){
+        if(keyW.isDown){
+            this.body.setVelocity(0,-this.scene.VEL);
+            this.anims.play('charUP');
+        }else{
+            if(keyS.isDown){
+                this.body.setVelocity(0,this.scene.VEL);
+                this.anims.play('charDOWN');
+            }else{
+                if(keyA.isDown){
+                    this.body.setVelocity(-this.scene.VEL, 0);
+                    this.anims.play('charLEFT');
+                }else{
+                    if(keyD.isDown){
+                        this.body.setVelocity(this.scene.VEL, 0);
+                        this.anims.play('charDOWN');
+                    }else{
+                        this.body.setVelocity(0,0);
+                    }
+                }
+            }
+        }
+    }
+}
