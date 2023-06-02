@@ -3,7 +3,7 @@ class Oz extends Phaser.Scene {
         super('ozScene');
     }
     preload() {
-        this.load.path = './assets'
+        this.load.path = './assets/'
         this.load.image('tilesetImage', 'tileset.png');
         this.load.tilemapTiledJSON('tilemapJSON','Wiz.json');
     }
