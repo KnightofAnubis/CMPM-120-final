@@ -28,7 +28,8 @@ class House extends Phaser.Scene {
         keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
-        this.cursors = this.input.keyboard.createCursorKeys();
+        this.cursors = this.input.keyboard.createCursorKeys(); 
+       
     }
 
     update() {
@@ -57,6 +58,20 @@ class House extends Phaser.Scene {
 
     collision(){
         //switch next scene
-        this.scene.start('ozScene');
+        this.witch.setVelocity(0,0);
+         this.basicTween = this.tweens.add({
+            targets: this.shadow,
+            scale: { from: 1, to: 10 },
+            angle: { from: 0, to: 360 },
+            ease: 'Sine.easeInOut',
+            duration: 2000,
+            repeat: 1, 
+            yoyo: false,
+            hold: 1000,
+        });
+        this.basicTween.play();
+        this.time.delayedCall(2000, ()=>{
+            this.scene.start('ozScene');
+        });    
     }
 }
