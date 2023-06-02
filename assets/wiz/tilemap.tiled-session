@@ -1,4 +1,9 @@
 {
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "Wiz.tmj",
     "expandedProjectPaths": [
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
@@ -22,26 +27,28 @@
         "tileset.tsx": {
             "scaleInDock": 1.5,
             "scaleInEditor": 1
-        },
-        "wiz.tmx": {
-            "scale": 2,
-            "selectedLayer": 1,
-            "viewCenter": {
-                "x": 214,
-                "y": 185
-            }
         }
     },
-    "last.exportedFilePath": "C:/Users/Zac Bell/Desktop/CMPM120/CMPM-120-final/assets/wiz",
+    "last.exportedFilePath": "C:/Users/Zac Bell/Desktop/CMPM120/CMPM-120-final/assets",
+    "last.imagePath": "C:/Users/Zac Bell/Desktop/CMPM120/CMPM-120-final/assets",
     "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
+    "map.lastUsedFormat": "json",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "map.width": 100,
     "openFiles": [
         "Wiz.tmj",
         "tileset.tsx"
     ],
+    "project": "tilemap.tiled-project",
     "recentFiles": [
-        "wiz.tmx",
         "tileset.tsx",
         "Wiz.tmj",
         "forestAndWiz.tmx"
-    ]
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
 }

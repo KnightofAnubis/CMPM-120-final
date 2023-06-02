@@ -3,12 +3,17 @@ class Oz extends Phaser.Scene {
         super('ozScene');
     }
     preload() {
-        this.load.path = './assets/'
+        this.load.path = './assets/wiz/'
         this.load.image('tilesetImage', 'tileset.png');
-        this.load.tilemapTiledJSON('tilemapJSON','Wiz.json');
+        this.load.tilemapTiledJSON('tilemapJSON','wiz.json');
     }
 
     create() {
+        const map = this.add.tilemap('tilemapJSON');
+        const tileset = map.addTilesetImage('tileset', 'tilesetImage');
+        
+        const floor = map.createLayer('Tile Layer 1', 'tileset');
+        const wallStage = map.createLayer('Tile Layer 2', 'tileset');
 
     }
 
