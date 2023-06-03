@@ -27,7 +27,7 @@ class playerChar extends Phaser.Physics.Arcade.Sprite {
                 }else{
                     if(keyD.isDown){
                         this.body.setVelocity(this.scene.VEL, 0);
-                        this.anims.play('charDOWN');
+                        this.anims.play('charRIGHT');
                     }else{
                         this.body.setVelocity(0,0);
                     }

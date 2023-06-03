@@ -8,10 +8,27 @@ class House extends Phaser.Scene {
     create() {
         //background: tornado
         this.tornado = this.add.image(game.config.width/2, game.config.height/2, 'tornado', 0).setOrigin(0.5);
-
+        
         //witch sprite
-        this.witch = this.physics.add.sprite(game.config.width/2, game.config.height/2, 'witch', 0).setVelocity(100, 200).setBounce(1, 1).setCollideWorldBounds(true, 1, 1, true);
-        this.witch.body.setSize(50,50);
+        //need to set it to follow a path...
+        this.witchPath = this.add.path(game.config.width-100, game.config.height/2); // start of path
+        this.witchPath.circleTo(200);                // radius of circle path
+        let s = this.witchPath.getStartPoint();   // get start point of path
+        // add path follower: follower(path, x, y, texture [, frame])
+        this.witch = this.add.follower(this.witchPath, s.x, s.y, 'witch').setScale(0.8);
+        // start path follow with config
+        this.witch.startFollow({
+            from: 0,            // points allow a path are values 0–1
+            to: 1,
+            delay: 0,
+            duration: 10000,
+            ease: 'Power0',
+            hold: 0,
+            repeat: -1,
+            yoyo: false,
+            rotateToPath: true
+        });
+        this.physics.world.enable(this.witch);
 
 
 
@@ -21,7 +38,7 @@ class House extends Phaser.Scene {
         //what the player needs to do...
         menuConfig.fontSize = '20px';
         menuConfig.color = '#ffffff';
-        this.add.text(game.config.width/2, game.config.height/5.5 - borderUISize - borderPadding, "Press SPACE to Squash the Wicked Witch of the East!", menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/5.5 - borderUISize - borderPadding, "Squash the Wicked Witch of the East!", menuConfig).setOrigin(0.5);
 
         //controls for house shadow WASD
         keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
@@ -50,15 +67,15 @@ class House extends Phaser.Scene {
         this.shadow.setVelocity(this.VEL * this.direction.x, this.VEL * this.direction.y);
        
         //squish the witch
-        if(keySPACE.isDown){
-            //house shadow 'zooms in' gets bigger
-            this.physics.world.collide(this.shadow, this.witch, this.collision, null, this);
-        }
+        
+        this.physics.world.collide(this.shadow, this.witch, this.collision, null, this);
+        
     }
 
     collision(){
         //switch next scene
-        this.witch.setVelocity(0,0);
+        this.witch.destroy();
+        //house shadow 'zooms in' gets bigger
          this.basicTween = this.tweens.add({
             targets: this.shadow,
             scale: { from: 1, to: 10 },
@@ -71,7 +88,7 @@ class House extends Phaser.Scene {
         });
         this.basicTween.play();
         this.time.delayedCall(2000, ()=>{
-            this.scene.start('ozScene');
+            this.scene.start('munchkinScene');
         });    
     }
 }
