@@ -6,28 +6,95 @@ class playerChar extends Phaser.Physics.Arcade.Sprite {
         this.scene.physics.add.existing(this);
         this.body.onOverlap = true;
         this.body.setCollideWorldBounds(true);
+
+        // this.anims.create({
+        //     key: 'up',
+        //     defaultTextureKey: 'dorothy',
+        //     frame:  
+        //     //this.anims.generateFrameNames('dorothy', {
+        //     //     prefix: 'dorothy_',
+        //     //     suffix: '',
+        //     //     start: 0,
+        //     //     end:2,
+        //     //     zeroPad: 0,
+        //     [
+        //         `dorothy_10`,
+        //         `dorothy_9`,
+        //         `dorothy_11`,
+        //         `dorothy_9`
+        //     ],
+        //     duration: 300,
+        //     repeat: -1
+        // });
+        // this.anims.play('up');
     }
 
     create(){
         
+        // this.scene.anims.create({
+        //     key: 'charUP',
+        //     defaultTextureKey: 'dorothy',
+        //     frames: [
+        //         `dorothy_10`,
+        //         `dorothy_9`,
+        //         `dorothy_11`,
+        //         `dorothy_9`,
+        //     ],
+        //     frameRate: 10,
+        //     repeat: -1 
+        // });
+        // this.scene.anims.create({
+        //     key: 'charDOWN',
+        //     defaultTextureKey: 'dorothy',
+        //     frames: [
+        //         `dorothy_1`,
+        //         `dorothy_0`,
+        //         `dorothy_2`,
+        //         `dorothy_0`,
+        //     ],
+        //     frameRate: 40,
+        // });
+        // this.scene.anims.create({
+        //     key: 'charRIGHT',
+        //     defaultTextureKey: 'dorothy',
+        //     frames: [
+        //         `dorothy_4`,
+        //         `dorothy_3`,
+        //         `dorothy_5`,
+        //         `dorothy_3`,
+        //     ],
+        //     frameRate: 40,
+        // });
+        // this.scene.anims.create({
+        //     key: 'charLEFT',
+        //     defaultTextureKey: 'dorothy',
+        //     frames: [
+        //         `dorothy_7`,
+        //         `dorothy_6`,
+        //         `dorothy_8`,
+        //         `dorothy_6`,
+        //     ],
+        //     frameRate: 40
+        // });
+        // this.anims.play('charUP');
     }
 
     update(){
         if(keyW.isDown){
             this.body.setVelocity(0,-this.scene.VEL);
-            this.anims.play('charUP');
+            this.play({key:'charUP'});
         }else{
             if(keyS.isDown){
                 this.body.setVelocity(0,this.scene.VEL);
-                this.anims.play('charDOWN');
+                // this.anims.play('charDOWN');
             }else{
                 if(keyA.isDown){
                     this.body.setVelocity(-this.scene.VEL, 0);
-                    this.anims.play('charLEFT');
+                    // this.anims.play('charLEFT');
                 }else{
                     if(keyD.isDown){
                         this.body.setVelocity(this.scene.VEL, 0);
-                        this.anims.play('charRIGHT');
+                        // this.anims.play('charDOWN');
                     }else{
                         this.body.setVelocity(0,0);
                     }

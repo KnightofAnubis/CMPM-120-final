@@ -9,52 +9,15 @@ class Oz extends Phaser.Scene {
         this.load.image('tilesetImage', 'tileset.png');
         this.load.tilemapTiledJSON('tilemapJSON','wiz.json');
         this.load.path = './assets/'
-        this.load.atlas('dorothy', 'dorothy.png', 'dorothy.json');
+        this.load.aseprite('dorothy', 'dorothy.png', 'dorothy.json');
+
     }
 
     create() {
-        //animations
-        this.anims.create({
-            key: 'charUP',
-            frameRate: 40,
-            repeat: -1,
-            frames: this.anims.generateFrameNumbers('dorothy', {
-                start: `dorothy_9`,
-                end: `dorothy_11`
-            })
+       const tags = this.anims.createFromAseprite('dorothy');
+        
 
-        });
-        this.anims.create({
-            key: 'charDOWN',
-            frameRate: 40,
-            repeat: -1,
-            frames: this.anims.generateFrameNumbers('dorothy', {
-                start: `dorothy_0`,
-                end: `dorothy_2`
-            })
-
-        });
-        this.anims.create({
-            key: 'charLEFT',
-            frameRate: 40,
-            repeat: -1,
-            frames: this.anims.generateFrameNumbers('dorothy', {
-                start: `dorothy_6`,
-                end: `dorothy_8`
-            })
-
-        });
-        this.anims.create({
-            key: 'charRIGHT',
-            frameRate: 40,
-            repeat: -1,
-            frames: this.anims.generateFrameNumbers('dorothy', {
-                start: `dorothy_3`,
-                end: `dorothy_5`
-            })
-
-        });
-       
+    
         //input keys
         keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
         keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
@@ -69,17 +32,13 @@ class Oz extends Phaser.Scene {
         
         const floor = map.createLayer('Tile Layer 1', 'tileset', 0, 0);
         const wallStage = map.createLayer('Tile Layer 2', 'tileset', 0, 0);
-
-        //toto
-        this.toto = new playerChar(this, 64, 448, 'dorothy', 'dorothy_0');
-        
-        this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
-        this.cameras.main.startFollow(this.toto, true, 0.25, 0.25);
-        this.physics.world.bounds.setTo(0, 0, map.widthInPixels, map.heightInPixels);
+        this.toto = new playerChar(this, 64, 448, 'dorothy', 'dorothy0');
+        this.cameras.main.startFollow(this.toto)
     }
 
     update() {
         this.toto.update();
+        this.toto.play({key:'charLEFT'});
 
     }
 }
