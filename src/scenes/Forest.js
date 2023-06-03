@@ -12,7 +12,8 @@ class Forest extends Phaser.Scene{
         //add tile map
         
         //add characters
-
+        //dorothy
+        this.dorothy = new playerChar(this, 64, 448, 'dorothy', 'dorothy_0');
 
         //set camera viewports 
         const viewportW = game.config.width/2;
@@ -30,7 +31,7 @@ class Forest extends Phaser.Scene{
         this.cam3.setBounds(0, 0, this.bgSize, this.bgSize);
         this.cam4.setBounds(0, 0, this.bgSize, this.bgSize);
         // assign camera follow target
-        //this.cam1.startFollow(); //Dorothy
+        this.cam1.startFollow(this.dorothy, true, 0.25, 0.25); //Dorothy
         //this.cam2.startFollow(); //Scarecrow
         //this.cam3.startFollow(); //Tin Man
         //this.cam4.startFollow(); //Lion
