@@ -14,7 +14,6 @@ class Oz extends Phaser.Scene {
     }
 
     create() {
-       const tags = this.anims.createFromAseprite('dorothy');
         
 
     
@@ -32,13 +31,11 @@ class Oz extends Phaser.Scene {
         
         const floor = map.createLayer('Tile Layer 1', 'tileset', 0, 0);
         const wallStage = map.createLayer('Tile Layer 2', 'tileset', 0, 0);
-        this.toto = new playerChar(this, 64, 448, 'dorothy', 'dorothy0');
+        this.toto = new playerChar(this, 64, 448, 'dorothy');
         this.cameras.main.startFollow(this.toto)
     }
 
     update() {
         this.toto.update();
-        this.toto.play({key:'charLEFT'});
-
     }
 }
