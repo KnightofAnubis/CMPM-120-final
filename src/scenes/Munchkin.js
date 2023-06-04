@@ -39,11 +39,24 @@ class Munchkin extends Phaser.Scene {
         });
 
         //Background music
-        this.music =  this.sound.add('munchkin');
-        this.music.play('loop', {
-            delay: 0
-        });
+        this.sound.audioPlayDelay = 0.1;
+        this.sound.loopEndOffset = 0.05;
         
+        const loopMarker = {
+            name: 'loop',
+            start: 0,
+            duration: 200,
+            config: {
+                volume: 0.1,
+                loop: true
+            }
+        };
+
+        this.music =  this.sound.add('munchkin');
+        this.music.addMarker(loopMarker);
+            this.music.play('loop', {
+                delay: 0
+            });
         
 
     }
@@ -77,8 +90,11 @@ class Munchkin extends Phaser.Scene {
 
         
         
-        this.time.delayedCall(8000, () => {
+        this.time.delayedCall(20000, () => {
+            this.music.pause();
             //play pop sound
+            this.pop = this.sound.add('pop');
+            this.pop.play();
             this.scene.start('forestScene');
         });
         

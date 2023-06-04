@@ -9,6 +9,28 @@ class House extends Phaser.Scene {
         //background: tornado
         this.tornado = this.add.image(game.config.width/2, game.config.height/2, 'tornado', 0).setOrigin(0.5);
         
+        //sound
+        this.sound.audioPlayDelay = 0.1;
+        this.sound.loopEndOffset = 0.05;
+        
+        const loopMarker = {
+            name: 'loop',
+            start: 0,
+            duration: 5,
+            config: {
+                volume: 4,
+                loop: true
+            }
+        };
+
+        this.wind =  this.sound.add('wind');
+        this.wind.addMarker(loopMarker);
+            this.wind.play('loop', {
+                delay: 0
+            });
+    
+
+
         //witch sprite
         //need to set it to follow a path...
         this.witchPath = this.add.path(game.config.width-100, game.config.height/2); // start of path
@@ -88,6 +110,7 @@ class House extends Phaser.Scene {
         });
         this.basicTween.play();
         this.time.delayedCall(2000, ()=>{
+            this.wind.pause();
             this.scene.start('munchkinScene');
         });    
     }

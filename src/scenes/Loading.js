@@ -35,6 +35,8 @@ class Load extends Phaser.Scene {
         this.load.atlas('dorothy', 'dorothy.png', 'dorothy.json');
         // load audio assets
         this.load.audio('munchkin', 'oz.wav');
+        this.load.audio('pop', 'pop.wav');
+        this.load.audio('wind', 'wind.wav');
 
 
 
