@@ -27,8 +27,12 @@ class Load extends Phaser.Scene {
         this.load.image('bubble', 'bubble.png');
         this.load.image('folwer01', 'flower01.png');
 
-        
-        
+        //tilemap
+        this.load.path = './assets/'
+        this.load.image('tilesetImage', 'tileset.png');
+        this.load.tilemapTiledJSON('tilemapJSON','munchkin.json');
+        this.load.path = './assets/'
+        this.load.atlas('dorothy', 'dorothy.png', 'dorothy.json');
         // load audio assets
         
     }
