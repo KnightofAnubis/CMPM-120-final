@@ -9,47 +9,6 @@ class Munchkin extends Phaser.Scene {
     create() {
         //scene test without tilemap:
         //this.add.text(game.config.width/2, game.config.height/5 - borderUISize - borderPadding, "This is Oz!", menuConfig).setOrigin(0.5);
-        //animations
-        this.anims.create({
-            key: 'charUP',
-            frameRate: 40,
-            repeat: -1,
-            frames: this.anims.generateFrameNumbers('dorothy', {
-                start: `dorothy_9`,
-                end: `dorothy_11`
-            })
-
-        });
-        this.anims.create({
-            key: 'charDOWN',
-            frameRate: 40,
-            repeat: -1,
-            frames: this.anims.generateFrameNumbers('dorothy', {
-                start: `dorothy_0`,
-                end: `dorothy_2`
-            })
-
-        });
-        this.anims.create({
-            key: 'charLEFT',
-            frameRate: 40,
-            repeat: -1,
-            frames: this.anims.generateFrameNumbers('dorothy', {
-                start: `dorothy_6`,
-                end: `dorothy_8`
-            })
-
-        });
-        this.anims.create({
-            key: 'charRIGHT',
-            frameRate: 40,
-            repeat: -1,
-            frames: this.anims.generateFrameNumbers('dorothy', {
-                start: `dorothy_3`,
-                end: `dorothy_5`
-            })
-
-        });
        
         //input keys
         keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
@@ -78,6 +37,14 @@ class Munchkin extends Phaser.Scene {
             callbackScope: this,
             loop: false
         });
+
+        //Background music
+        this.music =  this.sound.add('munchkin');
+        this.music.play('loop', {
+            delay: 0
+        });
+        
+        
 
     }
 
