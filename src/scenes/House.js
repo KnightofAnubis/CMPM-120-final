@@ -32,7 +32,7 @@ class House extends Phaser.Scene {
 
 
         //witch sprite
-        //need to set it to follow a path...
+        //need to set it to follow a path... from cameralucida?
         this.witchPath = this.add.path(game.config.width-100, game.config.height/2); // start of path
         this.witchPath.circleTo(200);                // radius of circle path
         let s = this.witchPath.getStartPoint();   // get start point of path

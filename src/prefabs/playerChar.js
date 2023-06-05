@@ -2,10 +2,12 @@ class playerChar extends Phaser.Physics.Arcade.Sprite {
     constructor(scene, x, y, texture, frame) {
         super(scene, x, y, texture, frame);
         this.scene = scene
+        //add to scene
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
         this.body.onOverlap = true;
         this.body.setCollideWorldBounds(true);
+        //create anims
         const tags = this.anims.createFromAseprite('dorothy');
         console.log(tags);
         this.isMotion = false;
@@ -14,6 +16,7 @@ class playerChar extends Phaser.Physics.Arcade.Sprite {
     create() {}
 
     update() {
+        //movement
         if (Phaser.Input.Keyboard.JustDown(keyW)) {
             this.body.setVelocity(0, -this.scene.VEL);
             this.play({ key: 'charUP', repeat: -1 });
