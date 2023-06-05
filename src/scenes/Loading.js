@@ -26,13 +26,19 @@ class Load extends Phaser.Scene {
         //scene munchkins
         this.load.image('bubble', 'bubble.png');
         this.load.image('folwer01', 'flower01.png');
-
+        //Wiz scene
+        this.load.path ='./assets/wiz/'
+        this.load.atlas('wiz', 'demon_spawn.png', 'demon_spawn.json');
+        this.load.image('particleBase','particleBase.png');
+        this.load.image('smoke', 'cloud.png');
+        this.load.image('fireball', 'fireball.png');
         //tilemap
         this.load.path = './assets/'
         this.load.image('tilesetImage', 'tileset.png');
         this.load.tilemapTiledJSON('tilemapJSON','munchkin.json');
-        this.load.path = './assets/'
-        this.load.atlas('dorothy', 'dorothy.png', 'dorothy.json');
+        this.load.tilemapTiledJSON('tilemapWizJSON','wiz/wiz.json');
+        //char aseprite sheets
+        this.load.aseprite('dorothy', 'dorothy.png', 'dorothy.json');
         // load audio assets
         this.load.audio('munchkin', 'oz.wav');
         this.load.audio('pop', 'pop.wav');
