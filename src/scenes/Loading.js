@@ -37,6 +37,7 @@ class Load extends Phaser.Scene {
         this.load.image('tilesetImage', 'tileset.png');
         this.load.tilemapTiledJSON('tilemapJSON','munchkin.json');
         this.load.tilemapTiledJSON('tilemapWizJSON','wiz/wiz.json');
+        this.load.tilemapTiledJSON('tilemapForestJSON','forest.json');
         //char aseprite sheets
         this.load.aseprite('dorothy', 'dorothy.png', 'dorothy.json');
         // load audio assets

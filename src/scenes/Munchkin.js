@@ -23,7 +23,7 @@ class Munchkin extends Phaser.Scene {
         const background = map.createLayer('Tile Layer 1', tileset, 0, 0);
 
         //dorothy
-        this.dorothy = new playerChar(this, 64, 448, 'dorothy', 'dorothy_0');
+        this.dorothy = new playerChar(this, 64, 448, 'dorothy');
 
         //camera stuff
         this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
