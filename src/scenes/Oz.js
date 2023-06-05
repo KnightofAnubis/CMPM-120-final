@@ -26,7 +26,9 @@ class Oz extends Phaser.Scene {
         const floor = map.createLayer('Tile Layer 1', 'tileset', 0, 0);
         const wallStage = map.createLayer('Tile Layer 2', 'tileset', 0, 0);
         this.toto = new playerChar(this, 64, 448, 'dorothy');
-        this.cameras.main.startFollow(this.toto)
+        this.cameras.main.startFollow(this.toto);
+        this.cameras.main.setBounds(0,0, this.mapSize, this.mapSize);
+
         this.wiz = this.physics.add.sprite(this.mapSize/2, 96, 'wiz', 0).setOrigin(0.5, 1);
         this.wiz.scale = 1.4;
         this.addParticles();

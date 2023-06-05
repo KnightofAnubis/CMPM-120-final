@@ -5,7 +5,7 @@ class Forest extends Phaser.Scene{
 
     create() {
         //scene test without tilemap:
-        this.add.text(game.config.width/2, game.config.height/5 - borderUISize - borderPadding, "This is the forest!", menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/5 - borderUISize - borderPadding, "Press SPACE to continue...", menuConfig).setOrigin(0.5);
         //variables
         this.bgSize = 3000;
 
@@ -20,6 +20,7 @@ class Forest extends Phaser.Scene{
         const viewportH = game.config.height/2;
         const centerX = game.config.width/2;
         const centerY = game.config.height/2;
+        
         //add( [x] [, y] [, width] [, height] [, makeMain] [, name])
         this.cam1 = this.cameras.main.setViewport(0, 0, viewportW, viewportH).setZoom(0.5);
         this.cam2 = this.cameras.add(centerX, 0, viewportW, viewportH).setZoom(0.5);
@@ -43,8 +44,11 @@ class Forest extends Phaser.Scene{
         // DEBUG
         //console.log(this.cameras);
     }
-    updata() {
-
+    update() {
+        this.dorothy.update();
+        if(this.cursors.space.isDown){
+            this.scene.start('ozScene');
+        }
     }
 
 }

@@ -90,7 +90,7 @@ class Munchkin extends Phaser.Scene {
 
         
         
-        this.time.delayedCall(20000, () => {
+        this.time.delayedCall(8000, () => {
             this.music.pause();
             //play pop sound
             this.pop = this.sound.add('pop');
