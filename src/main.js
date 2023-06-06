@@ -18,7 +18,7 @@ let config = {
         }
     },
 
-    scene: [Load, Menu,  House, Munchkin, Forest, Oz, GameOver, Credit]
+    scene: [Load, Menu,  House,  Munchkin, UI, Forest, Oz, GameOver, Credit]
    
 }
 //menu config
@@ -41,11 +41,12 @@ let borderUISize = game.config.height / 15;
 let borderPadding = borderUISize / 3;
 
 let keyW, keyA, keyS, keyD, keyC, keySPACE;
-
+let score;
+const sceneEvents = new Phaser.Events.EventEmitter();
 /* maybe use...
 let keyLEFT, keyRIGHT, keyUP, keyDOWN, keyR, keyM;
 let level;
 let highScore;
 let newHighScore = false;
-let score;
+
 */
