@@ -28,8 +28,9 @@ class Load extends Phaser.Scene {
         this.load.image('folwer01', 'flower01.png');
         //Wiz scene
         this.load.path ='./assets/wiz/'
-        this.load.atlas('wiz', 'demon_spawn.png', 'demon_spawn.json');
         this.load.image('particleBase','particleBase.png');
+        this.load.image('demonOpen','demonOpen.png');
+        this.load.image('demonClose','demonClose.png');
         this.load.image('smoke', 'cloud.png');
         this.load.image('fireball', 'fireball.png');
         //tilemap
