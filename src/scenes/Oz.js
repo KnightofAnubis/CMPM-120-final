@@ -12,6 +12,7 @@ class Oz extends Phaser.Scene {
 
     create() {
         //input keys
+        this.cursors = this.input.keyboard.createCursorKeys();
         keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
         keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
@@ -54,6 +55,9 @@ class Oz extends Phaser.Scene {
     }
     update() {
         this.toto.update();
+        if(this.cursors.space.isDown){
+            this.scene.start('gameOverScene');
+        }
     }
     
     addParticles(){
