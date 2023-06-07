@@ -31,13 +31,7 @@ class Munchkin extends Phaser.Scene {
         this.cameras.main.startFollow(this.dorothy, true, 0.25, 0.25);
         this.physics.world.bounds.setTo(0, 0, map.widthInPixels, map.heightInPixels);
 
-        //for when bubble appears and what happens after...
-        this.bubbleTimer = this.time.addEvent({
-            delay: 8000,
-            callback: this.goodWitch,
-            callbackScope: this,
-            loop: false
-        });
+        
 
         //Background music
         this.sound.audioPlayDelay = 0.1;
@@ -78,7 +72,13 @@ class Munchkin extends Phaser.Scene {
         
         this.nextFlower = this.sys.game.loop.time + 700;
 
-       
+       //for when bubble appears and what happens after...
+        this.bubbleTimer = this.time.addEvent({
+            delay: 8000,
+            callback: this.goodWitch,
+            callbackScope: this,
+            loop: false
+        });
         
     }
     
@@ -124,6 +124,8 @@ class Munchkin extends Phaser.Scene {
                 hold: 1000,
             });
             this.basicTween.play();
+            this.flowers.clear(true,true);
+            this.nextFlower = this.sys.game.loop.time + 20000;
         });
 
         

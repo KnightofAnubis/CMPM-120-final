@@ -5,16 +5,33 @@ class Forest extends Phaser.Scene{
     }
 
     create() { 
+        //temp music
+        this.sound.audioPlayDelay = 0.1;
+        this.sound.loopEndOffset = 0.05;
         
-        
+        const loopMarker = {
+            name: 'loop',
+            start: 0,
+            duration: 200,
+            config: {
+                volume: 0.1,
+                loop: true
+            }
+        };
+
+        this.music =  this.sound.add('munchkin');
+        this.music.addMarker(loopMarker);
+            this.music.play('loop', {
+                delay: 0
+            });
+
         //input keys
         this.cursors = this.input.keyboard.createCursorKeys();
         keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
         keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
-        //scene test without tilemap:
-        this.add.text(game.config.width/2, game.config.height/5 - borderUISize - borderPadding, "Press SPACE to continue...", menuConfig).setOrigin(0.5);
+        
         
 
         //add tile map
@@ -24,6 +41,9 @@ class Forest extends Phaser.Scene{
         const trees = map.createLayer('trees', tileset, 0, 0);
         const trees2 = map.createLayer('trees2', tileset, 0, 0);
         const bush = map.createLayer('bush', tileset, 0, 0);
+
+        //scene test without tilemap:
+        this.add.text(game.config.width/2, game.config.height/2.5 - borderUISize - borderPadding, "Press SPACE to continue...", menuConfig).setOrigin(0.5);
 
 
         this.cameras.main.setZoom(2);
