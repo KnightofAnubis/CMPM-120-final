@@ -42,7 +42,5 @@ class playerChar extends Phaser.Physics.Arcade.Sprite {
                 }
             }
         }
-
-
     }
 }
