@@ -104,13 +104,14 @@ class Munchkin extends Phaser.Scene {
         this.physics.world.collide(this.dorothy, this.flowerGroup, this.flowerCollision, null, this);
         if(this.bubble){
             this.physics.moveToObject(this.bubble, this.dorothy);
-        }   
+        } 
     }
 
     goodWitch() {
         //enter bubble of the good witch
-        this.bubble = this.physics.add.sprite(0, 0, 'bubble', 0);
-        this.bubble.body.setVelocity(10, 10);
+        this.bubble = this.physics.add.sprite(0, 0, 'bubble', 0).setVelocity(10, 10);
+        this.bubble.body.velocity.x = 100;
+        this.bubble.body.velocity.y = 100;
         
        this.time.delayedCall(14000, () => {
             //gets bigger
@@ -124,8 +125,9 @@ class Munchkin extends Phaser.Scene {
                 hold: 1000,
             });
             this.basicTween.play();
+            //clear flowers and stop there spawning
             this.flowers.clear(true,true);
-            this.nextFlower = this.sys.game.loop.time + 20000;
+            this.nextFlower = null;
         });
 
         
@@ -135,6 +137,8 @@ class Munchkin extends Phaser.Scene {
             //play pop sound
             this.pop = this.sound.add('pop');
             this.pop.play();
+            
+            this.scene.stop('UIScene');
             this.scene.start('forestScene');
         });
         

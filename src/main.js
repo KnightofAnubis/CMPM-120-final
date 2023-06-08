@@ -1,6 +1,8 @@
 //Kelsey Melott <kmelott@ucsc.edu> & Yasha Bell
 //Journey through Oz
-//time it took: 
+//time it took: 30+
+// five of Phaser's major components:
+// physics systems, cameras, particle effects, the animation manager, the tween manager, timers, tilemaps
 
 
 

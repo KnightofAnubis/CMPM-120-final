@@ -13,7 +13,7 @@ class Menu extends Phaser.Scene {
         
         //title page
         this.add.image(game.config.width/2, game.config.height/2, 'title', 0).setOrigin(0.5);
-
+    
         //input for moving to next scene
         this.cursors = this.input.keyboard.createCursorKeys();
         keyC = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.C);

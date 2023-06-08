@@ -21,7 +21,7 @@ class UI extends Phaser.Scene {
         }
         //Ui score for munchkin scene
         this.add.rectangle(game.config.width/20, game.config.height/12, game.config.width*2, 35, 0xF699CD, 0.5).setOrigin(0.5);
-        this.add.text(game.config.width/2, game.config.height/12, "Those flowers look interseting...", textConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/12, "Those flowers look interesting...", textConfig).setOrigin(0.5);
         this.scoreText = this.add.text(game.config.width/20, game.config.height/12, score, textConfig).setOrigin(0.5);
         //this.scoreText.setScrollFactor(0,0);
        
