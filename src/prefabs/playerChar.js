@@ -13,25 +13,34 @@ class playerChar extends Phaser.Physics.Arcade.Sprite {
         this.isMotion = false;
         this.lastVelocityX = 0;
         this.lastVelocityY = 0;
+        this.currentPress = keyW;
     }
 
     create() { }
 
     update() {
         //movement
-        if (keyW.isDown) {
+        if (Phaser.Input.Keyboard.JustDown(keyW)) {
             this.body.setVelocity(0, -this.scene.VEL);
+            this.currentPress = keyW;
         }
-        if (keyS.isDown) {
+        if (Phaser.Input.Keyboard.JustDown(keyS)) {
             this.body.setVelocity(0, this.scene.VEL);
+            this.currentPress = keyS;
+
         }
-        if (keyA.isDown) {
+        if (Phaser.Input.Keyboard.JustDown(keyA)) {
             this.body.setVelocity(-this.scene.VEL, 0);
+            this.currentPress = keyA;
+
         }
-        if (keyD.isDown) {
+        if (Phaser.Input.Keyboard.JustDown(keyD)) {
             this.body.setVelocity(this.scene.VEL, 0);
+            this.currentPress = keyD;
+
         }
-        if ((keyW.isUp && keyA.isUp) && (keyS.isUp && keyD.isUp)) {
+        console.log(this.currentPress)
+        if (this.currentPress.isUp) {
             this.anims.stopAfterRepeat(0);
             this.body.setVelocity(0, 0);
             this.isMotion = false;
