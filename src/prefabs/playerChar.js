@@ -14,6 +14,7 @@ class playerChar extends Phaser.Physics.Arcade.Sprite {
         this.lastVelocityX = 0;
         this.lastVelocityY = 0;
         this.currentPress = keyW;
+        this.lockMove =true;
     }
 
     create() { }
@@ -39,11 +40,12 @@ class playerChar extends Phaser.Physics.Arcade.Sprite {
             this.currentPress = keyD;
 
         }
-        console.log(this.currentPress)
         if (this.currentPress.isUp) {
             this.anims.stopAfterRepeat(0);
             this.body.setVelocity(0, 0);
-            this.isMotion = false;
+        }
+        if(this.lockMove){
+            this.setVelocity(0,0);
         }
 
         if(this.lastVelocityX != this.body.velocity.x || this.lastVelocityY != this.body.velocity.y){

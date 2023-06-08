@@ -27,11 +27,11 @@ class Oz extends Phaser.Scene {
         const floor = map.createLayer('Tile Layer 1', 'tileset', 0, 0);
         const wallStage = map.createLayer('Tile Layer 2', 'tileset', 0, 0);
         this.toto = new playerChar(this, 64, 448, 'dorothy');
-        this.cameras.main.startFollow(this.toto);
         this.cameras.main.setBounds(0,0, this.mapSize, this.mapSize);
 
         this.wiz = this.physics.add.sprite(this.mapSize/2, 96, 'demonOpen', 0).setOrigin(0.5, 1);
         this.wiz.scale = 1.4;
+        this.cameras.main.startFollow(this.wiz);
         this.addParticles();
         console.log(this.wiz);
 
@@ -58,13 +58,36 @@ class Oz extends Phaser.Scene {
             }
         
         });
-        this.physics.world.overlap(this.toto, this.fireball, () => {
-            this.scene.reset('ozScene');
+        // derived from  https://blog.ourcade.co/posts/2020/phaser-3-typewriter-text-effect-bitmap/
+        this.wizDio = 'I AM OZ THE GREAT AND POWERFUL\n\nLEAVE MY PRESENTS AT ONCE\n\n OR FACE MY WRATH!'
+        this.wizDisplay = this.add.text(this.wiz.x, 128, '',{align: 'center'}).setOrigin(.5,0).setDepth(1);
+        this.textIndex = 0;
+        this.time.addEvent({
+            callback: () => {
+                this.wizDisplay.text += this.wizDio[this.textIndex];
+                this.textIndex ++;
+            },
+            repeat: this.wizDio.length - 1,
+            delay: 100,
         });
+        this.time.addEvent({
+            callback: ()  => {
+                this.cameras.main.startFollow(this.toto);
+                this.wizDisplay.destroy();
+                this.toto.lockMove = false;
+                
+            },
+            delay : 100 * this.wizDio.length + 1000
+        })
+
+
     }
     update() {
         this.toto.update();
         this.wiz.update();
+        this.physics.world.overlap(this.toto, this.fireball, () => {
+            this.scene.restart()
+        });
         if(this.cursors.space.isDown){
             this.scene.start('gameOverScene');
         }
