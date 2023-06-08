@@ -3,6 +3,9 @@
  <tileset firstgid="1" name="tileset" tilewidth="16" tileheight="16" tilecount="2112" columns="33">
   <image source="wiz/tileset.png" trans="000000" width="528" height="1024"/>
  </tileset>
+ <tileset firstgid="2113" name="tileset" tilewidth="16" tileheight="16" tilecount="2112" columns="33">
+  <image source="tileset.png" trans="000000" width="528" height="1024"/>
+ </tileset>
  <layer id="1" name="floor" width="40" height="30">
   <data encoding="csv">
 2078,2078,2078,2078,2078,2078,2078,2078,2078,2078,2078,2078,2078,2078,2078,2078,2078,2078,2078,2078,2078,2078,2078,2078,2078,2078,2078,2078,2078,2078,2078,2078,2078,2078,2078,2078,2078,2078,2078,2078,
