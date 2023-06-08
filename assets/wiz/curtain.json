@@ -1,0 +1,92 @@
+{ "frames": {
+   "curtain0": {
+    "frame": { "x": 0, "y": 0, "w": 80, "h": 96 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 96 },
+    "sourceSize": { "w": 80, "h": 96 },
+    "duration": 100
+   },
+   "curtain1": {
+    "frame": { "x": 80, "y": 0, "w": 80, "h": 96 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 96 },
+    "sourceSize": { "w": 80, "h": 96 },
+    "duration": 100
+   },
+   "curtain2": {
+    "frame": { "x": 160, "y": 0, "w": 80, "h": 96 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 96 },
+    "sourceSize": { "w": 80, "h": 96 },
+    "duration": 100
+   },
+   "curtain3": {
+    "frame": { "x": 240, "y": 0, "w": 80, "h": 96 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 96 },
+    "sourceSize": { "w": 80, "h": 96 },
+    "duration": 100
+   },
+   "curtain4": {
+    "frame": { "x": 320, "y": 0, "w": 80, "h": 96 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 96 },
+    "sourceSize": { "w": 80, "h": 96 },
+    "duration": 100
+   },
+   "curtain5": {
+    "frame": { "x": 400, "y": 0, "w": 80, "h": 96 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 96 },
+    "sourceSize": { "w": 80, "h": 96 },
+    "duration": 100
+   },
+   "curtain6": {
+    "frame": { "x": 480, "y": 0, "w": 80, "h": 96 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 96 },
+    "sourceSize": { "w": 80, "h": 96 },
+    "duration": 100
+   },
+   "curtain7": {
+    "frame": { "x": 560, "y": 0, "w": 80, "h": 96 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 96 },
+    "sourceSize": { "w": 80, "h": 96 },
+    "duration": 100
+   },
+   "curtain8": {
+    "frame": { "x": 640, "y": 0, "w": 80, "h": 96 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 96 },
+    "sourceSize": { "w": 80, "h": 96 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.2.40-x64",
+  "image": "curtain.png",
+  "format": "RGBA8888",
+  "size": { "w": 720, "h": 96 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "standAndUnfoldYourself", "from": 0, "to": 8, "direction": "forward" }
+  ],
+  "layers": [
+   { "name": "Layer 1", "opacity": 255, "blendMode": "normal" },
+   { "name": "Layer 2", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

@@ -30,6 +30,8 @@ class Oz extends Phaser.Scene {
         this.cameras.main.setBounds(0,0, this.mapSize, this.mapSize);
 
         this.wiz = this.physics.add.sprite(this.mapSize/2, 96, 'demonOpen', 0).setOrigin(0.5, 1);
+        this.ironCurtain = this.physics.add.sprite(48, 32, 'theIronCurtain').setOrigin(1,0);
+        this.anims.createFromAseprite('theIronCurtain');
         this.wiz.scale = 1.4;
         this.cameras.main.startFollow(this.wiz);
         this.addParticles();
@@ -87,6 +89,9 @@ class Oz extends Phaser.Scene {
         this.wiz.update();
         this.physics.world.overlap(this.toto, this.fireball, () => {
             this.scene.restart()
+        });
+        this.physics.world.overlap(this.toto, this.ironCurtain, () => {
+            this.ironCurtain.play('standAndUnfoldYourself');
         });
         if(this.cursors.space.isDown){
             this.scene.start('gameOverScene');
