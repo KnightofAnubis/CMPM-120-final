@@ -30,27 +30,38 @@ class Oz extends Phaser.Scene {
         this.cameras.main.startFollow(this.toto);
         this.cameras.main.setBounds(0,0, this.mapSize, this.mapSize);
 
-        this.wiz = this.physics.add.sprite(this.mapSize/2, 96, 'demonOpen', 0).setOrigin(0.5, 1);
+        this.wiz = this.physics.add.sprite(this.mapSize/2, 96, 'wiz', 0).setOrigin(0.5, 1);
         this.wiz.scale = 1.4;
         this.addParticles();
         console.log(this.wiz);
 
-        this.projectitle = this.add.group({
+        this.fireball = this.add.group({
             classType: projectile,
             runChildUpdate: true,
             maxSize: -1
         });
-        this.tweens.add({
+        this.tweens.chain({
             targets: this.wiz,
-            texture: 'demonClose',
-            duration: 1000,
+            tweens: [
+                {
+                    name: '1',
+                    duration: 500
+                },
+                {
+                    texture:,
+                    duration: 500
+                }
+            ],
             repeat: -1,
             onRepeat: () => {
                 for(let i = 0; i <= 180; i += 10){
-                    this.projectitle.add(new projectile(this, this.mapSize/2, 80, 'fireball', i))
+                    this.fireball.add(new projectile(this, this.mapSize/2, 80, 'fireball', i))
                 }
             }
         
+        });
+        this.physics.world.overlap(this.toto, this.fireball, () => {
+            this.scene.reset('ozScene');
         });
     }
     update() {
@@ -80,7 +91,7 @@ class Oz extends Phaser.Scene {
         this.particleConfig = {
                 color: [0x3b3943],
                 lifespan: 2000,
-                alpha: 0.2,
+                alpha: 0.4,
                 x: {min: this.mapSize/2 - 88, max: this.mapSize/2 + 88},
                 angle: { min: -135, max: -45},
                 scale: { start: 1, end: 3, ease: 'sine.out' },
