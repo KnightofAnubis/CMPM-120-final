@@ -8,13 +8,15 @@ class playerChar extends Phaser.Physics.Arcade.Sprite {
         this.body.onOverlap = true;
         this.body.setCollideWorldBounds(true);
         //create anims
-        const tags = this.anims.createFromAseprite('dorothy');
-        console.log(tags);
+        const tags = this.anims.createFromAseprite(texture);
+
         this.isMotion = false;
         this.lastVelocityX = 0;
         this.lastVelocityY = 0;
         this.currentPress = keyW;
-        this.lockMove =true;
+        this.lockMove = false;
+        this.VEL = 100;
+        
     }
 
     create() { }
@@ -22,21 +24,22 @@ class playerChar extends Phaser.Physics.Arcade.Sprite {
     update() {
         //movement
         if (Phaser.Input.Keyboard.JustDown(keyW)) {
-            this.body.setVelocity(0, -this.scene.VEL);
+            this.body.setVelocity(0, -this.VEL);
             this.currentPress = keyW;
+            console.log('test');
         }
         if (Phaser.Input.Keyboard.JustDown(keyS)) {
-            this.body.setVelocity(0, this.scene.VEL);
+            this.body.setVelocity(0, this.VEL);
             this.currentPress = keyS;
 
         }
         if (Phaser.Input.Keyboard.JustDown(keyA)) {
-            this.body.setVelocity(-this.scene.VEL, 0);
+            this.body.setVelocity(-this.VEL, 0);
             this.currentPress = keyA;
 
         }
         if (Phaser.Input.Keyboard.JustDown(keyD)) {
-            this.body.setVelocity(this.scene.VEL, 0);
+            this.body.setVelocity(this.VEL, 0);
             this.currentPress = keyD;
 
         }

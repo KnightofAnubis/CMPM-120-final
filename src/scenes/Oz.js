@@ -27,6 +27,7 @@ class Oz extends Phaser.Scene {
         const floor = map.createLayer('Tile Layer 1', 'tileset', 0, 0);
         const wallStage = map.createLayer('Tile Layer 2', 'tileset', 0, 0);
         this.toto = new playerChar(this, 64, 448, 'dorothy');
+        this.toto.lockMove = true;
         this.cameras.main.setBounds(0,0, this.mapSize, this.mapSize);
 
         this.wiz = this.physics.add.sprite(this.mapSize/2, 96, 'demonOpen', 0).setOrigin(0.5, 1);
@@ -35,8 +36,6 @@ class Oz extends Phaser.Scene {
         this.wiz.scale = 1.4;
         this.cameras.main.startFollow(this.wiz);
         this.addParticles();
-        console.log(this.wiz);
-
         this.fireball = this.add.group({
             classType: projectile,
             runChildUpdate: true,
