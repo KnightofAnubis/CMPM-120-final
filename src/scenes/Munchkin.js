@@ -9,8 +9,8 @@ class Munchkin extends Phaser.Scene {
     create() {
         
         
-       
         //input keys
+        this.cursors = this.input.keyboard.createCursorKeys();
         keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
         keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
@@ -20,11 +20,25 @@ class Munchkin extends Phaser.Scene {
         //tilemap
         const map = this.add.tilemap('tilemapJSON');
         const tileset = map.addTilesetImage('tileset', 'tilesetImage');
-        const background = map.createLayer('Tile Layer 1', tileset, 0, 0);
 
+        //layers
+        const background = map.createLayer('ground', tileset, 0, 0);
+        const gold_swirl = map.createLayer('goldSwirl', tileset, 0, 0);
+        const red_swirl = map.createLayer('redSwirl', tileset, 0, 0);
+        const houses1 = map.createLayer('houses1', tileset, 0, 0);
+        const houses2 = map.createLayer('houses2', tileset, 0, 0);
+        const houses3 = map.createLayer('houses3', tileset, 0, 0);
+
+        const dorothyAwake = map.findObject('dorothy', obj => obj.name == 'dorothy');
         //dorothy
-        this.dorothy = new playerChar(this, 0, 0, 'dorothy');
+        this.dorothy = new playerChar(this, dorothyAwake.x, dorothyAwake.y, 'dorothy');
 
+        houses1.setCollisionByProperty({collides: true});
+        houses2.setCollisionByProperty({collides: true});
+        houses3.setCollisionByProperty({collides: true});
+        this.physics.add.collider(this.dorothy, houses1);
+        this.physics.add.collider(this.dorothy, houses2);
+        this.physics.add.collider(this.dorothy, houses3);
         
         //camera stuff
         this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);

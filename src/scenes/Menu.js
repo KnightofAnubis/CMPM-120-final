@@ -22,7 +22,7 @@ class Menu extends Phaser.Scene {
     update() {
         //moving to next scene...
         if(this.cursors.space.isDown){
-            this.scene.start('ozScene');
+            this.scene.start('munchkinScene');
         }
         //credits
         if(keyC.isDown){
