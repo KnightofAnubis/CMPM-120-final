@@ -36,6 +36,7 @@ class Load extends Phaser.Scene {
         this.load.image('smoke', 'cloud.png');
         this.load.image('fireball', 'fireball.png');
         this.load.aseprite('theIronCurtain', 'curtain.png','curtain.json')
+        this.load.atlas('wizSprite', 'wizSprite.png', 'wizSprite.json')
         //tilemap
         this.load.path = './assets/'
         this.load.image('tilesetImage', 'tileset.png');

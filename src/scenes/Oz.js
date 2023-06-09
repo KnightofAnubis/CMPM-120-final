@@ -31,8 +31,8 @@ class Oz extends Phaser.Scene {
         this.toto.lockMove = true;
         this.cameras.main.setBounds(0,0, this.mapSize, this.mapSize);
         this.wiz = this.physics.add.sprite(this.mapSize/2, 96, 'demonOpen', 0).setOrigin(0.5, 1);
+        this.realWiz = this.physics.add.sprite(418, 76, 'wizSprite', '2');
         this.ironCurtain = this.physics.add.sprite(this.mapSize - 48, 32, 'theIronCurtain').setOrigin(1,0);
-        this.realWiz = this.physics.add.sprite(this.ironCurtain - 64, this.ironCurtain - 48)
         this.ironCurtain.anims.createFromAseprite('theIronCurtain');
 
         this.wiz.scale = 1.4;
@@ -71,7 +71,7 @@ class Oz extends Phaser.Scene {
                 this.textIndex ++;
             },
             repeat: this.wizDio.length - 1,
-            delay: 100,
+            delay: 50,
         });
         this.time.addEvent({
             callback: ()  => {
@@ -82,14 +82,20 @@ class Oz extends Phaser.Scene {
             },
             delay : 100 * this.wizDio.length + 1000
         })
-        this.ironCurtain.on('ANIMATIONCOMPLETE',{
-                this.realWiz.frame = 
+        this.ironCurtain.on('ANIMATIONCOMPLETE', () => {
+            this.realWiz.setFrame = '0';
+            this.tweens.add({
+                y: this.y - 8,
+                ease:elastic.out,
+                duration: 200
+            });
         });
 
 
     }
     update() {
         this.toto.update();
+        console.log(this.toto.x, this.toto.y)
         this.wiz.update();
         this.physics.world.overlap(this.toto, this.fireball, () => {
             this.scene.restart()
