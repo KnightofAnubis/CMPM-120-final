@@ -9,7 +9,6 @@ class playerChar extends Phaser.Physics.Arcade.Sprite {
         this.body.setCollideWorldBounds(true);
         //create anims
         const tags = this.anims.createFromAseprite(texture);
-
         this.isMotion = false;
         this.lastVelocityX = 0;
         this.lastVelocityY = 0;

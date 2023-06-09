@@ -4,6 +4,7 @@ class Oz extends Phaser.Scene {
         
         this.VEL = 100;
         this.mapSize = 512;
+        this.curtainTrigger = false;
     }
     preload() {
         
@@ -26,13 +27,14 @@ class Oz extends Phaser.Scene {
         
         const floor = map.createLayer('Tile Layer 1', 'tileset', 0, 0);
         const wallStage = map.createLayer('Tile Layer 2', 'tileset', 0, 0);
-        this.toto = new playerChar(this, 64, 448, 'dorothy');
+        this.toto = new playerChar(this, 448, 448, 'dorothy');
         this.toto.lockMove = true;
         this.cameras.main.setBounds(0,0, this.mapSize, this.mapSize);
-
         this.wiz = this.physics.add.sprite(this.mapSize/2, 96, 'demonOpen', 0).setOrigin(0.5, 1);
-        this.ironCurtain = this.physics.add.sprite(48, 32, 'theIronCurtain').setOrigin(1,0);
-        this.anims.createFromAseprite('theIronCurtain');
+        this.ironCurtain = this.physics.add.sprite(this.mapSize - 48, 32, 'theIronCurtain').setOrigin(1,0);
+        this.realWiz = this.physics.add.sprite(this.ironCurtain - 64, this.ironCurtain - 48)
+        this.ironCurtain.anims.createFromAseprite('theIronCurtain');
+
         this.wiz.scale = 1.4;
         this.cameras.main.startFollow(this.wiz);
         this.addParticles();
@@ -80,6 +82,9 @@ class Oz extends Phaser.Scene {
             },
             delay : 100 * this.wizDio.length + 1000
         })
+        this.ironCurtain.on('ANIMATIONCOMPLETE',{
+                this.realWiz.frame = 
+        });
 
 
     }
@@ -89,12 +94,16 @@ class Oz extends Phaser.Scene {
         this.physics.world.overlap(this.toto, this.fireball, () => {
             this.scene.restart()
         });
-        this.physics.world.overlap(this.toto, this.ironCurtain, () => {
-            this.ironCurtain.play('standAndUnfoldYourself');
-        });
-        if(this.cursors.space.isDown){
-            this.scene.start('gameOverScene');
+        if(!this.curtainTrigger){
+            this.physics.world.overlap(this.toto, this.ironCurtain, () => {
+                this.curtainTrigger = true;
+                console.log('overlap');
+                this.ironCurtain.anims.play({ key : 'standAndUnfoldYourself', repeat: 0});
+            });
         }
+        // if(this.cursors.space.isDown){
+        //     this.scene.start('gameOverScene');
+        // }
     }
     
     addParticles(){

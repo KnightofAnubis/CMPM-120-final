@@ -1,5 +1,5 @@
 { "frames": {
-   "curtain0": {
+   "0": {
     "frame": { "x": 0, "y": 0, "w": 80, "h": 96 },
     "rotated": false,
     "trimmed": false,
@@ -7,7 +7,7 @@
     "sourceSize": { "w": 80, "h": 96 },
     "duration": 100
    },
-   "curtain1": {
+   "1": {
     "frame": { "x": 80, "y": 0, "w": 80, "h": 96 },
     "rotated": false,
     "trimmed": false,
@@ -15,7 +15,7 @@
     "sourceSize": { "w": 80, "h": 96 },
     "duration": 100
    },
-   "curtain2": {
+   "2": {
     "frame": { "x": 160, "y": 0, "w": 80, "h": 96 },
     "rotated": false,
     "trimmed": false,
@@ -23,7 +23,7 @@
     "sourceSize": { "w": 80, "h": 96 },
     "duration": 100
    },
-   "curtain3": {
+   "3": {
     "frame": { "x": 240, "y": 0, "w": 80, "h": 96 },
     "rotated": false,
     "trimmed": false,
@@ -31,7 +31,7 @@
     "sourceSize": { "w": 80, "h": 96 },
     "duration": 100
    },
-   "curtain4": {
+   "4": {
     "frame": { "x": 320, "y": 0, "w": 80, "h": 96 },
     "rotated": false,
     "trimmed": false,
@@ -39,7 +39,7 @@
     "sourceSize": { "w": 80, "h": 96 },
     "duration": 100
    },
-   "curtain5": {
+   "5": {
     "frame": { "x": 400, "y": 0, "w": 80, "h": 96 },
     "rotated": false,
     "trimmed": false,
@@ -47,7 +47,7 @@
     "sourceSize": { "w": 80, "h": 96 },
     "duration": 100
    },
-   "curtain6": {
+   "6": {
     "frame": { "x": 480, "y": 0, "w": 80, "h": 96 },
     "rotated": false,
     "trimmed": false,
@@ -55,7 +55,7 @@
     "sourceSize": { "w": 80, "h": 96 },
     "duration": 100
    },
-   "curtain7": {
+   "7": {
     "frame": { "x": 560, "y": 0, "w": 80, "h": 96 },
     "rotated": false,
     "trimmed": false,
@@ -63,7 +63,7 @@
     "sourceSize": { "w": 80, "h": 96 },
     "duration": 100
    },
-   "curtain8": {
+   "8": {
     "frame": { "x": 640, "y": 0, "w": 80, "h": 96 },
     "rotated": false,
     "trimmed": false,
