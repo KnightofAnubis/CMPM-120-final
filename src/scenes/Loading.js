@@ -43,13 +43,16 @@ class Load extends Phaser.Scene {
         this.load.tilemapTiledJSON('tilemapJSON','munchkin.json');
         this.load.tilemapTiledJSON('tilemapWizJSON','wiz/wiz.json');
         this.load.tilemapTiledJSON('tilemapForestJSON','forest.json');
-        //char aseprite sheets
-        this.load.aseprite('dorothy', 'dorothy.png', 'dorothy.json');
         // load audio assets
         this.load.audio('munchkin', 'oz.wav');
         this.load.audio('pop', 'pop.wav');
         this.load.audio('wind', 'wind.wav');
-
+        //char aseprite sheets
+        this.load.aseprite('dorothy', 'dorothy.png', 'dorothy.json');
+        this.load.path = './assets/sideChar/'
+        this.load.aseprite('tin', 'tinman.png', 'tinman.json');
+        this.load.aseprite('lion', 'lion.png', 'lion.json');
+        this.load.aseprite('scare', 'scarecrow.png', 'scarecrow.json');
 
 
     }
