@@ -81,21 +81,11 @@ class Oz extends Phaser.Scene {
                 
             },
             delay : 100 * this.wizDio.length + 1000
-        })
-        this.ironCurtain.on('ANIMATIONCOMPLETE', () => {
-            this.realWiz.setFrame = '0';
-            this.tweens.add({
-                y: this.y - 8,
-                ease:elastic.out,
-                duration: 200
-            });
         });
-
-
     }
     update() {
         this.toto.update();
-        console.log(this.toto.x, this.toto.y)
+        console.log(this.toto.x, this.toto.y);
         this.wiz.update();
         this.physics.world.overlap(this.toto, this.fireball, () => {
             this.scene.restart()
@@ -103,8 +93,19 @@ class Oz extends Phaser.Scene {
         if(!this.curtainTrigger){
             this.physics.world.overlap(this.toto, this.ironCurtain, () => {
                 this.curtainTrigger = true;
-                console.log('overlap');
                 this.ironCurtain.anims.play({ key : 'standAndUnfoldYourself', repeat: 0});
+                this.time.addEvent({
+                    callback: ()  => {
+                        target: this.realWiz,
+                        this.realWiz.setFrame = '0',
+                        this.tweens.add({
+                            y: this.y - 8,
+                            ease: 'elastic.out' ,
+                            duration: 200
+                        });
+                    },
+                    delay : 1000
+                });
             });
         }
         // if(this.cursors.space.isDown){
