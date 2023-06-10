@@ -33,9 +33,9 @@ class Munchkin extends Phaser.Scene {
         //dorothy
         this.dorothy = new playerChar(this, dorothyAwake.x, dorothyAwake.y, 'dorothy');
 
-        houses1.setCollisionByProperty({collides: true});
-        houses2.setCollisionByProperty({collides: true});
-        houses3.setCollisionByProperty({collides: true});
+        houses1.setCollisionByProperty({collide: true});
+        houses2.setCollisionByProperty({collide: true});
+        houses3.setCollisionByProperty({collide: true});
         this.physics.add.collider(this.dorothy, houses1);
         this.physics.add.collider(this.dorothy, houses2);
         this.physics.add.collider(this.dorothy, houses3);
