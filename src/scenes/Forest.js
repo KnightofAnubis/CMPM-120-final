@@ -51,10 +51,14 @@ class Forest extends Phaser.Scene{
         //add characters
         //dorothy
         this.dorothy = new playerChar(this, 64, game.config.height/2.5, 'dorothy');
-        this.tinman = new followChar(this, 20, game.config.height/2.5, 'tin');
-        this.lion = new followChar(this, 90, game.config.height/2.5, 'lion');
-        this.scare = new followChar(this, 120, game.config.height/2.5, 'scare');
 
+        this.tinman = new followChar(this, 20, game.config.height/2.5, 'tin');
+
+        this.lion = new followChar(this, 90, game.config.height/2.5, 'lion');
+
+        this.scare = new followChar(this, 120, game.config.height/2.5, 'scare');
+        this.waitChar = [this.tinman, this.scare, this.lion];
+        this.activechar = [this.dorothy];
         //set camera viewports 
         const viewportW = game.config.width/2;
         const viewportH = game.config.height/2;
@@ -81,7 +85,10 @@ class Forest extends Phaser.Scene{
         
         this.physics.world.bounds.setTo(0, 0, map.widthInPixels, map.heightInPixels);
         
-       
+        for(let i = 0; i < waitChar.lenght; i++)
+        this.physics.world.overlap(this.dorothy, this.waitChar[i], () => {
+        
+        });
         // DEBUG
         //console.log(this.cameras);
     }
@@ -90,6 +97,7 @@ class Forest extends Phaser.Scene{
         this.tinman.update();
         this.lion.update();
         this.scare.update();
+        
         if(this.cursors.space.isDown){
             this.scene.start('ozScene');
         }

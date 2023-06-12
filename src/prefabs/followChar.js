@@ -6,7 +6,9 @@ class followChar extends Phaser.Physics.Arcade.Sprite {
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
         this.body.onOverlap = true;
+        this.body.onCollide = true;
         this.body.setCollideWorldBounds(true);
+        this.follow = null;
         //create anims
         const tags = this.anims.createFromAseprite(texture);
         this.isMotion = false;
@@ -18,36 +20,24 @@ class followChar extends Phaser.Physics.Arcade.Sprite {
         
     }
 
-    create() { }
+    create() {}
 
     update() {
         //movement
-        if (Phaser.Input.Keyboard.JustDown(keyW)) {
-            this.body.setVelocity(0, -this.VEL);
-            this.currentPress = keyW;
-            console.log('test');
-        }
-        if (Phaser.Input.Keyboard.JustDown(keyS)) {
-            this.body.setVelocity(0, this.VEL);
-            this.currentPress = keyS;
-
-        }
-        if (Phaser.Input.Keyboard.JustDown(keyA)) {
-            this.body.setVelocity(-this.VEL, 0);
-            this.currentPress = keyA;
-
-        }
-        if (Phaser.Input.Keyboard.JustDown(keyD)) {
-            this.body.setVelocity(this.VEL, 0);
-            this.currentPress = keyD;
-
-        }
-        if (this.currentPress.isUp) {
-            this.anims.stopAfterRepeat(0);
-            this.body.setVelocity(0, 0);
-        }
-        if(this.lockMove){
-            this.setVelocity(0,0);
+        this.xDIFF = this.follow.x - this.x;
+        this.yDIFF = this.follow.y - this.y;
+        if(Math.abs(this.xDIFF) > Math.abs(this.yDIFF)){
+            if(this.xDIFF > 0){
+                this.body.setVelocity(this.VEL,0);
+            }else{
+                this.body.setVelocity(-this.VEL,0);
+            }
+        }else{
+            if(this.yDIFF > 0){
+                this.body.setVelocity(0,this.VEL);
+            }else{
+                this.body.setVelocity(0,-this.VEL);
+            }
         }
 
         if(this.lastVelocityX != this.body.velocity.x || this.lastVelocityY != this.body.velocity.y){
