@@ -19,7 +19,7 @@ class Forest extends Phaser.Scene {
             }
         };
 
-        this.music = this.sound.add('munchkin');
+        this.music = this.sound.add('forest');
         this.music.addMarker(loopMarker);
         this.music.play('loop', {
             delay: 0
@@ -122,6 +122,7 @@ class Forest extends Phaser.Scene {
         });
 
         if (this.cursors.space.isDown) {
+            this.music.pause();
             this.scene.start('ozScene');
         }
     }

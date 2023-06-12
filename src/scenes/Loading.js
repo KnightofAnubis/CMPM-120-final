@@ -47,6 +47,7 @@ class Load extends Phaser.Scene {
         this.load.audio('munchkin', 'oz.wav');
         this.load.audio('pop', 'pop.wav');
         this.load.audio('wind', 'wind.wav');
+        this.load.audio('forest', 'forest.wav');
         //char aseprite sheets
         this.load.aseprite('dorothy', 'dorothy.png', 'dorothy.json');
         this.load.path = './assets/sideChar/'
