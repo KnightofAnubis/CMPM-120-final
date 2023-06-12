@@ -15,7 +15,7 @@ class followChar extends Phaser.Physics.Arcade.Sprite {
         this.lastVelocityX = 0;
         this.lastVelocityY = 0;
         this.currentPress = keyW;
-        this.lockMove = false;
+        this.lockMove = true;
         this.VEL = 100;
         
     }
@@ -26,20 +26,33 @@ class followChar extends Phaser.Physics.Arcade.Sprite {
         //movement
         this.xDIFF = this.follow.x - this.x;
         this.yDIFF = this.follow.y - this.y;
-        if(Math.abs(this.xDIFF) > Math.abs(this.yDIFF)){
-            if(this.xDIFF > 0){
-                this.body.setVelocity(this.VEL,0);
+            if(Math.abs(this.xDIFF) > Math.abs(this.yDIFF)){
+                if(Math.abs(this.xDIFF) > 10){
+                    if(this.xDIFF > 0){
+                        this.body.setVelocity(this.VEL,0);
+                    }else{
+                        this.body.setVelocity(-this.VEL,0);
+                    }
+                }else{
+                    this.anims.stopAfterRepeat(0);
+                    this.body.setVelocity(0,0);
+                }
             }else{
-                this.body.setVelocity(-this.VEL,0);
+                if(Math.abs(this.yDIFF) > 10){
+                    if(this.yDIFF > 0){
+                        this.body.setVelocity(0,this.VEL);
+                    }else{
+                        this.body.setVelocity(0,-this.VEL);
+                    }
+                }else{
+                    this.anims.stopAfterRepeat(0);
+                    this.body.setVelocity(0,0);
+                }
             }
-        }else{
-            if(this.yDIFF > 0){
-                this.body.setVelocity(0,this.VEL);
-            }else{
-                this.body.setVelocity(0,-this.VEL);
+            
+            if(this.lockMove){
+                this.setVelocity(0,0);
             }
-        }
-
         if(this.lastVelocityX != this.body.velocity.x || this.lastVelocityY != this.body.velocity.y){
             this.lastVelocityY = this.body.velocity.y;
             this.lastVelocityX = this.body.velocity.x;

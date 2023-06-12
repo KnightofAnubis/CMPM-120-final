@@ -15,7 +15,6 @@ class playerChar extends Phaser.Physics.Arcade.Sprite {
         this.currentPress = keyW;
         this.lockMove = false;
         this.VEL = 100;
-        
     }
 
     create() { }
