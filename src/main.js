@@ -20,7 +20,7 @@ let config = {
         }
     },
 
-    scene: [Load, Menu,  House,  Munchkin, UI, Forest, Oz, GameOver, Credit]
+    scene: [Load, Menu,  House,  Munchkin, UI,  Forest, Oz, GameOver, Credit]
    
 }
 //menu config

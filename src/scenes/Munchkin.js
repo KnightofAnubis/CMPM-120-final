@@ -25,13 +25,14 @@ class Munchkin extends Phaser.Scene {
         const background = map.createLayer('ground', tileset, 0, 0);
         const gold_swirl = map.createLayer('goldSwirl', tileset, 0, 0);
         const red_swirl = map.createLayer('redSwirl', tileset, 0, 0);
-        const houses1 = map.createLayer('houses1', tileset, 0, 0);
-        const houses2 = map.createLayer('houses2', tileset, 0, 0);
-        const houses3 = map.createLayer('houses3', tileset, 0, 0);
-
+        
         const dorothyAwake = map.findObject('dorothy', obj => obj.name == 'dorothy');
         //dorothy
         this.dorothy = new playerChar(this, dorothyAwake.x, dorothyAwake.y, 'dorothy');
+        
+        const houses1 = map.createLayer('houses1', tileset, 0, 0);
+        const houses2 = map.createLayer('houses2', tileset, 0, 0);
+        const houses3 = map.createLayer('houses3', tileset, 0, 0);
 
         houses1.setCollisionByProperty({collide: true});
         houses2.setCollisionByProperty({collide: true});

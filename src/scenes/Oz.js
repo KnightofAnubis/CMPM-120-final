@@ -106,11 +106,13 @@ class Oz extends Phaser.Scene {
                     },
                     delay : 1000
                 });
+                this.time.delayedCall(1000, ()=>{
+                    this.scene.start('gameOverScene');
+                });
+            
             });
         }
-        // if(this.cursors.space.isDown){
-        //     this.scene.start('gameOverScene');
-        // }
+        
     }
     
     addParticles(){

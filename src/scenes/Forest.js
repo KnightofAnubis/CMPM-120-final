@@ -32,7 +32,7 @@ class Forest extends Phaser.Scene {
         keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
 
-
+        
 
         //add tile map
         const map = this.add.tilemap('tilemapForestJSON');
@@ -43,8 +43,19 @@ class Forest extends Phaser.Scene {
         const corn = map.createLayer('scarecrow-corn', tileset, 0, 0);
         
 
-        //scene test without tilemap:
-        this.add.text(game.config.width / 2, game.config.height / 2.5 - borderUISize - borderPadding, "Press SPACE to continue...", menuConfig).setOrigin(0.5);
+          let textConfig = {
+            fontFamily: "Georgia",
+            fontSize: '10px',
+            //backgroundColor: '#008080',
+            color: '#000000',
+            align: 'right',
+            padding: {
+                top: 5,
+                bottom: 5,
+            },
+            fixedWidth: 0
+        }
+        this.text = this.add.text(100, game.config.height/1.4, "Find: Scarecrow, Tinman, and Lion", textConfig).setOrigin(0.5);
 
 
         this.cameras.main.setZoom(2);
@@ -94,6 +105,7 @@ class Forest extends Phaser.Scene {
         
         
 
+
         this.waitChar = [this.tinman, this.scare, this.lion];
         this.activechar = [this.dorothy];
         //set camera viewports 
@@ -137,8 +149,8 @@ class Forest extends Phaser.Scene {
             console.log('overlap');
             this.lion.lockMove = false;
         });
-       
-
+      
+        
     }
     update() {
         this.dorothy.update();
@@ -166,6 +178,7 @@ class Forest extends Phaser.Scene {
    switchScene(){
     console.log('end');
     this.music.pause();
+  
     this.scene.start('ozScene');
    }
 

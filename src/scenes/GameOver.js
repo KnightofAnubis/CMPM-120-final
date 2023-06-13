@@ -4,10 +4,14 @@ class GameOver extends Phaser.Scene {
     }
 
     create() {
+        menuConfig.fontSize = '28px',
+    
+        menuConfig.color = '#706553',
         //congrats message
         this.add.text(game.config.width/2, game.config.height/5 - borderUISize - borderPadding, "You Have Journeyed Through Oz", menuConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, game.config.height/3 - borderUISize - borderPadding, "You have completed the game!", menuConfig).setOrigin(0.5);
-        this.add.text(game.config.width/2, game.config.height/2.5 - borderUISize - borderPadding, "Press SPACE to return to the Menu", menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/2.3 - borderUISize - borderPadding, "You found " + score + " Munchkins!", menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/1.8 - borderUISize - borderPadding, "Press SPACE to return to the Menu", menuConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, game.config.height/1 - borderUISize - borderPadding, "Press the C arrow for Credits.", menuConfig).setOrigin(0.5);
 
           
