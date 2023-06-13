@@ -137,20 +137,6 @@ class Forest extends Phaser.Scene {
         const rect = this.add.rectangle(endTrigger.x, endTrigger.y, 30, 100, 0x000000, 0);
         this.endBody = this.physics.add.existing(rect, 1);
 
-        this.physics.world.overlap(this.dorothy, this.scare, () => {
-            console.log('overlap');
-            this.scare.lockMove = false;
-        });
-        this.physics.world.overlap(this.dorothy, this.tinman, () => {
-            console.log('overlap');
-            this.tinman.lockMove = false;
-        });
-        this.physics.world.overlap(this.dorothy, this.lion, () => {
-            console.log('overlap');
-            this.lion.lockMove = false;
-        });
-      
-        
     }
     update() {
         this.dorothy.update();
