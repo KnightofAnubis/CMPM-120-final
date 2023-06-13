@@ -37,10 +37,11 @@ class Forest extends Phaser.Scene {
         //add tile map
         const map = this.add.tilemap('tilemapForestJSON');
         const tileset = map.addTilesetImage('tileset', 'tilesetImage');
-        const background = map.createLayer('floor', tileset, 0, 0);
-        //const trees = map.createLayer('trees', tileset, 0, 0);
-        //const trees2 = map.createLayer('trees2', tileset, 0, 0);
-        //const bush = map.createLayer('bush', tileset, 0, 0);
+        const background = map.createLayer('ground', tileset, 0, 0);
+        const road = map.createLayer('road', tileset, 0, 0);
+        const fence = map.createLayer('scarecrow-fence', tileset, 0, 0);
+        const corn = map.createLayer('scarecrow-corn', tileset, 0, 0);
+        
 
         //scene test without tilemap:
         this.add.text(game.config.width / 2, game.config.height / 2.5 - borderUISize - borderPadding, "Press SPACE to continue...", menuConfig).setOrigin(0.5);
@@ -50,14 +51,48 @@ class Forest extends Phaser.Scene {
 
         //add characters
         //dorothy
-        this.dorothy = new playerChar(this, 64, game.config.height - 32, 'dorothy');
+        const dorothySpawn = map.findObject('dorothy', obj => obj.name == 'dorothySpawn');
+        this.dorothy = new playerChar(this, dorothySpawn.x, dorothySpawn.y, 'dorothy');
 
-        this.scare = new followChar(this, 120, game.config.height / 2, 'scare');
+        //scarecrow
+        const scareSpawn = map.findObject('scarecrow', obj => obj.name == 'scarecrowSpawn');
+        this.scare = new followChar(this, scareSpawn.x, scareSpawn.y, 'scare');
         this.scare.follow = this.dorothy;
-        this.tinman = new followChar(this, 20, game.config.height / 4, 'tin');
-        this.tinman.follow = this.scare
-        this.lion = new followChar(this, 90, 32, 'lion');
-        this.lion.follow = this.tinman
+
+        //tinman
+        const tinSpawn = map.findObject('tinman', obj => obj.name == 'tinmanSpawn');
+        this.tinman = new followChar(this, tinSpawn.x, tinSpawn.y, 'tin');
+        this.tinman.follow = this.scare;
+
+        //lion
+        const lionSpawn = map.findObject('lion', obj => obj.name == 'lionSpawn');
+        this.lion = new followChar(this, lionSpawn.x, lionSpawn.y, 'lion');
+        this.lion.follow = this.tinman;
+
+        //apear behind...
+        const tinTrees1 = map.createLayer('tinman-trees1', tileset, 0, 0);
+        const tinTrees2 = map.createLayer('tinman-tress2', tileset, 0, 0);
+        const lionTrees1 = map.createLayer('lion-trees1', tileset, 0, 0);
+        const lionTrees2 = map.createLayer('lion-trees2', tileset, 0, 0);
+        const lionFallen = map.createLayer('lion-fallen', tileset, 0, 0);
+
+        //collisions with tilemap
+        fence.setCollisionByProperty({collide: true});
+        corn.setCollisionByProperty({collide: true});
+        tinTrees1.setCollisionByProperty({collide: true});
+        tinTrees2.setCollisionByProperty({collide: true});
+        lionTrees1.setCollisionByProperty({collide: true});
+        lionTrees2.setCollisionByProperty({collide: true});
+        lionFallen.setCollisionByProperty({collide: true});
+        this.physics.add.collider(this.dorothy, fence);
+        this.physics.add.collider(this.dorothy, corn);
+        this.physics.add.collider(this.dorothy, tinTrees1);
+        this.physics.add.collider(this.dorothy, tinTrees2);
+        this.physics.add.collider(this.dorothy, lionTrees1);
+        this.physics.add.collider(this.dorothy, lionTrees2);
+        this.physics.add.collider(this.dorothy, lionFallen);
+        
+        
 
         this.waitChar = [this.tinman, this.scare, this.lion];
         this.activechar = [this.dorothy];
@@ -80,13 +115,15 @@ class Forest extends Phaser.Scene {
         this.cam4.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
         // assign camera follow target
         this.cam1.startFollow(this.dorothy, true, 0.25, 0.25); //Dorothy
-        this.cam2.startFollow(this.tinman, true, 0.25, 0.25); //Dorothy
-        this.cam3.startFollow(this.lion, true, 0.25, 0.25); //Dorothy
-        this.cam4.startFollow(this.scare, true, 0.25, 0.25); //Dorothy
+        this.cam4.startFollow(this.tinman, true, 0.25, 0.25); //tinman
+        this.cam2.startFollow(this.lion, true, 0.25, 0.25); //lion
+        this.cam3.startFollow(this.scare, true, 0.25, 0.25); //scarecrow
 
 
         this.physics.world.bounds.setTo(0, 0, map.widthInPixels, map.heightInPixels);
-
+        const endTrigger = map.findObject('end', obj => obj.name == 'endTrigger');
+        const rect = this.add.rectangle(endTrigger.x, endTrigger.y, 30, 100, 0x000000, 0);
+        this.endBody = this.physics.add.existing(rect, 1);
 
         this.physics.world.overlap(this.dorothy, this.scare, () => {
             console.log('overlap');
@@ -100,6 +137,7 @@ class Forest extends Phaser.Scene {
             console.log('overlap');
             this.lion.lockMove = false;
         });
+       
 
     }
     update() {
@@ -120,11 +158,15 @@ class Forest extends Phaser.Scene {
             console.log('overlap');
             this.lion.lockMove = false;
         });
-
-        if (this.cursors.space.isDown) {
-            this.music.pause();
-            this.scene.start('ozScene');
-        }
+        
+            
+        
+       this.physics.world.collide(this.dorothy, this.endBody, this.switchScene, null, this);
     }
+   switchScene(){
+    console.log('end');
+    this.music.pause();
+    this.scene.start('ozScene');
+   }
 
 }
